@@ -1,0 +1,19 @@
+<launch>
+  <node pkg="rosserial_python" type="serial_node.py" name="ADC_gourp0_node">
+    <remap from="/adc_topic" to="/adc_topic0"/>
+    <param name="port" value="/dev/ttyACM0"/>
+  </node>
+  <node pkg="rosserial_python" type="serial_node.py" name="ADC_gourp1_node">
+    <remap from="/adc_topic" to="/adc_topic1"/>
+    <param name="port" value="/dev/ttyACM1"/>
+  </node>
+  <node pkg="rosserial_python" type="serial_node.py" name="ADC_gourp2_node">
+    <remap from="/adc_topic" to="/adc_topic2"/>
+    <param name="port" value="/dev/ttyACM2"/>
+  </node>
+  <node pkg="rosserial_python" type="serial_node.py" name="ADC_gourp3_node">
+    <remap from="/adc_topic" to="/adc_topic3"/>
+    <param name="port" value="/dev/ttyACM3"/>
+  </node>
+</launch>
+

@@ -1,0 +1,30 @@
+<launch>
+
+  <arg name="model" default="$(find joint_capsule)/urdf/joint_capsule.urdf"/>
+  <arg name="gui" default="true" />
+  <arg name="rvizconfig" default="$(find joint_capsule)/rviz/urdf.rviz" />
+
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+
+  <node if="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+  <node unless="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+
+  <!-- launch realsense T265 -->
+  <include file="$(find realsense2_camera)/launch/rs_t265.launch" />
+
+  <!-- TF: link1 to camera_odom_frame is static -->
+  <!-- <node pkg="tf" type="static_transform_publisher" name="tf_link1_to_camera_odom_frame_static_publisher" args="-0.27882 0 0.0539 0 0 0 /link1 /camera_odom_frame 100" /> -->
+
+  <!-- TF: copy camera_link to camera_link_dummy -->
+  <!-- <node pkg="joint_capsule" type="camera_link_frame_copier" name="tf_camera_link_frame_copier_publisher" output="screen" /> -->
+
+  <!-- TF: link2 to camera_link_dummy is static -->
+  <!-- <node pkg="tf" type="static_transform_publisher" name="tf_link2_to_camera_link_dummy_static_publisher" args="-0.27882 0 0.0539 0 3.1416 0 /link2 /camera_link_dummy 100" /> -->
+
+  <!-- DEBUG :: TF: link2 to camera_link_dummy is static -->
+  <!-- <node pkg="tf" type="static_transform_publisher" name="tf_link1_to_tf_link2_static_publisher" args="0 0 0 0 0 0 /link1 /link2 100" /> -->
+
+</launch>
+

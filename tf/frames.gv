@@ -1,0 +1,15 @@
+digraph G {
+"camera_link" -> "camera_gyro_frame"[label="Broadcaster: /camera/realsense2_camera_manager\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1718442066.059 sec old)\nBuffer length: 0.000 sec\n"];
+"camera_pose_frame" -> "camera_link"[label="Broadcaster: /camera/realsense2_camera_manager\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1718442066.059 sec old)\nBuffer length: 0.000 sec\n"];
+"camera_gyro_frame" -> "camera_gyro_optical_frame"[label="Broadcaster: /camera/realsense2_camera_manager\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1718442066.059 sec old)\nBuffer length: 0.000 sec\n"];
+"camera_link" -> "camera_accel_frame"[label="Broadcaster: /camera/realsense2_camera_manager\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1718442066.059 sec old)\nBuffer length: 0.000 sec\n"];
+"camera_accel_frame" -> "camera_accel_optical_frame"[label="Broadcaster: /camera/realsense2_camera_manager\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1718442066.059 sec old)\nBuffer length: 0.000 sec\n"];
+"camera_odom_frame" -> "camera_pose_frame"[label="Broadcaster: /camera/realsense2_camera_manager\nAverage rate: 200.304 Hz\nMost recent transform: 1718442066.052 ( 0.007 sec old)\nBuffer length: 4.992 sec\n"];
+"link1" -> "camera_odom_frame"[label="Broadcaster: /tf_link1_to_camera_odom_frame_static_publisher\nAverage rate: 10.183 Hz\nMost recent transform: 1718442066.142 ( -0.083 sec old)\nBuffer length: 4.910 sec\n"];
+"link2" -> "camera_link_dummy"[label="Broadcaster: /tf_camera_link_frame_copier_publisher\nAverage rate: 19.936 Hz\nMost recent transform: 1718442066.060 ( -0.001 sec old)\nBuffer length: 4.966 sec\n"];
+"link1" -> "link2"[label="Broadcaster: /tf_from_link1_to_link2_publisher\nAverage rate: 10.204 Hz\nMost recent transform: 1718442066.001 ( 0.058 sec old)\nBuffer length: 4.900 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1718442066.059"[ shape=plaintext ] ;
+ }->"link1";
+}

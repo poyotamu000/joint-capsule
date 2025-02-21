@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<robot name="joint_capsule">
+
+  <!-- 第一の棒 -->
+  <link name="link1">
+    <visual>
+      <origin xyz="0.15 0 0" rpy="1.5708 0 1.5708"/>
+      <geometry>
+        <box size="0.03 0.03 0.26"/> <!-- 30mm x 30mm x 260mmの棒 -->
+      </geometry>
+      <material name="cyan">
+        <color rgba="0 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.03 0.03 0.26"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/> <!-- 質量を適当に (kg) -->
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <!-- 第二の棒 -->
+  <link name="link2">
+    <visual>
+      <origin xyz="-0.15 0 0" rpy="1.5708 0 1.5708"/>
+      <geometry>
+        <box size="0.03 0.03 0.26"/> <!-- 30mm x 30mm x 260mmの棒 -->
+      </geometry>
+      <material name="orange">
+        <color rgba="1 0.65 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.03 0.03 0.26"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/> <!-- 質量を適当に (kg) -->
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <!-- floating joint -->
+  <joint name="floating_joint" type="floating">
+    <parent link="link1"/>
+    <child link="link2"/>
+    <origin xyz="0 0 0"/> <!-- 接続位置: 第一の棒の先端 -->
+    <axis xyz="1 0 0"/>
+    <axis xyz="0 1 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+</robot>
+
