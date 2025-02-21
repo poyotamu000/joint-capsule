@@ -12,4 +12,17 @@ This dataset contains data collected from 60 strain gauge sensors and position/o
 - **roll_filtered_data_over_20.csv**: Filtered data where the twisting angle is 20 degrees or more.
 - **x_filtered_over_0.002_or_under_0.002_from_push_back.csv**: Extracted data where displacement in the push and pull direction is 2mm or more.
 
+## Sensor Number Mapping
+Due to a mismatch between the circuit board and sensor numbers, the `adc_data{i}` index should be replaced as follows during analysis:
+
+- `adc_data6` → `adc_data4`
+- `adc_data7` → `adc_data5`
+- `adc_data4` → `adc_data6`
+- `adc_data5` → `adc_data7`
+
+- `adc_data14` → `adc_data12`
+- `adc_data15` → `adc_data13`
+- `adc_data12` → `adc_data14`
+- `adc_data13` → `adc_data15`
+
 

@@ -1,4 +1,4 @@
- # README
+# README
 
 ## Overview
 This research code is based on ROS Noetic.
@@ -37,4 +37,4 @@ rosbag play $rosbag_filename.bag
 ## Analysis Results
 The analysis results are stored in the `learning_results/` directory.
 
-
+**Note:** Due to a mismatch between the circuit board and sensor numbers, ensure that the `adc_data{i}` indices are correctly mapped during analysis. The details are written in csv/README.md.
