@@ -2,11 +2,12 @@
 
 ## Overview
 
-This research code is based on ROS Noetic.
+This research code is based on ROS Noetic and Ubuntu 20.04.
 
 ## Data Collection
 
-Set up Arduino MEGA and the SLAM Camera according to the referenced papers and URDF files. Then, execute the following commands to drive the joints:
+Set up Arduino MEGA and the SLAM Camera according to the referenced papers and URDF files.
+Then, execute the following commands to drive the joints:
 
 ```sh
 roslaunch multi_adc.launch
@@ -25,17 +26,17 @@ rosbag play $rosbag_filename.bag
 
 ## Training and Analysis
 
-- The code corresponding to section **2.2**:
+- The code corresponding to proprioception:
   ```sh
-  python3 learning_adc64_to_rpy_and_translation.py
+  python3 script/learning_adc64_to_rpy_and_translation.py
   ```
-- The code corresponding to section **2.3**:
+- The code corresponding to redundancy analysis:
   ```sh
-  python3 learning_with_PI_analysis_reduction_multiple_trial.py
+  python3 script/learning_with_PI_analysis_reduction_multiple_trial.py
   ```
-- The code corresponding to section **2.4**:
+- The code corresponding to feature_analysis:
   ```sh
-  python3 learning_with_filtering.py
+  python3 script/learning_with_filtering.py
   ```
 
 ## Analysis Results
