@@ -9,9 +9,7 @@ import torch.optim as optim
 import matplotlib.pyplot as plt
 
 # Load csv
-# df = pd.read_csv("../csv/all_merged_data.csv")
 df = pd.read_csv("../csv/output_whole_all.csv")
-# df = pd.read_csv("../csv/output_angle90_random.csv")
 
 # Extract columns
 input_columns = [f"adc{i}_data{j}" for i in range(4) for j in range(16)]
@@ -94,9 +92,6 @@ for epoch in range(num_epochs):
     if (epoch + 1) % 10 == 0:
         print(f"Epoch {epoch+1}/{num_epochs}, Loss: {running_loss/len(train_loader)}")
 
-# モデルの保存
-torch.save(model.state_dict(), "../model/tmp_model.pth")
-
 # plot loss
 plt.figure(figsize=(10, 5))
 plt.plot(range(1, num_epochs + 1), train_losses, label="Training Loss")
@@ -137,12 +132,6 @@ print(f"Actuals[0] shape: {actuals[0].shape}")
 # inverse transform
 predictions_unscaled = np.zeros_like(predictions)
 actuals_unscaled = np.zeros_like(actuals)
-# predictions_unscaled[0] = scaler_y.inverse_transform(
-#     predictions[0].reshape(-1, 6)
-# ).reshape(predictions[0].shape)
-# actuals_unscaled[0] = scaler_y.inverse_transform(actuals[0].reshape(-1, 6)).reshape(
-#     actuals[0].shape
-# )
 
 for i in range(len(predictions)):
     predictions_unscaled[i] = scaler_y.inverse_transform(
@@ -186,55 +175,8 @@ results.append(
 results_df = pd.DataFrame(results)
 results_df.to_csv("learning_adc64_to_rpy_and_translation.csv", index=False)
 
+
 # make plot
-# fig, axes = plt.subplots(2, 3, figsize=(18, 6))
-
-# axes[0, 0].plot(actuals_unscaled[0][:, 0], label="True translation_x")
-# axes[0, 0].plot(
-#     predictions_unscaled[0][:, 0], label="Predicted translation_x", linestyle="dashed"
-# )
-# axes[0, 0].set_title("translation_x")
-# axes[0, 0].legend()
-
-# axes[0, 1].plot(actuals_unscaled[0][:, 1], label="True translation_y")
-# axes[0, 1].plot(
-#     predictions_unscaled[0][:, 1], label="Predicted translation_y", linestyle="dashed"
-# )
-# axes[0, 1].set_title("translation_y")
-# axes[0, 1].legend()
-
-# axes[0, 2].plot(actuals_unscaled[0][:, 2], label="True translation_z")
-# axes[0, 2].plot(
-#     predictions_unscaled[0][:, 2], label="Predicted translation_z", linestyle="dashed"
-# )
-# axes[0, 2].set_title("translation_z")
-# axes[0, 2].legend()
-
-# axes[1, 0].plot(actuals_unscaled[0][:, 3], label="True rpy_x")
-# axes[1, 0].plot(
-#     predictions_unscaled[0][:, 3], label="Predicted rpy_x", linestyle="dashed"
-# )
-# axes[1, 0].set_title("rpy_x")
-# axes[1, 0].legend()
-
-# axes[1, 1].plot(actuals_unscaled[0][:, 4], label="True rpy_y")
-# axes[1, 1].plot(
-#     predictions_unscaled[0][:, 4], label="Predicted rpy_y", linestyle="dashed"
-# )
-# axes[1, 1].set_title("rpy_y")
-# axes[1, 1].legend()
-
-# axes[1, 2].plot(actuals_unscaled[0][:, 5], label="True rpy_z")
-# axes[1, 2].plot(
-#     predictions_unscaled[0][:, 5], label="Predicted rpy_z", linestyle="dashed"
-# )
-# axes[1, 2].set_title("rpy_z")
-# axes[1, 2].legend()
-
-# plt.show()
-
-
-# make plot ver2 (all test loader once
 titles = [
     "x translation",
     "y translation",
@@ -268,10 +210,7 @@ plt.tight_layout()
 plt.show()
 
 
-# make plot ver3 (Each test loader)
-# titles = ["translation_x", "translation_y", "translation_z", "rpy_x", "rpy_y", "rpy_z"]
-
-# 各サンプルごとに個別のグラフを作成
+# make plot for each sample
 for sample_idx in range(len(predictions_unscaled)):
     fig, axes = plt.subplots(2, 3, figsize=(18, 12))
 
