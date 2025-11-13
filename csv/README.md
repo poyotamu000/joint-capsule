@@ -13,14 +13,14 @@ This dataset contains data collected from 60 strain gauge sensors and position/o
 ## Sensor Number Mapping
 Due to a mismatch between the circuit board and sensor numbers, the `adc_data{i}` index should be replaced as follows during analysis:
 
-- `adc_data6` → `adc_data4`
-- `adc_data7` → `adc_data5`
 - `adc_data4` → `adc_data6`
 - `adc_data5` → `adc_data7`
+- `adc_data6` → `adc_data4`
+- `adc_data7` → `adc_data5`
 
+- `adc_data12` → `adc_data15`
+- `adc_data13` → `adc_data14`
 - `adc_data14` → `adc_data12`
 - `adc_data15` → `adc_data13`
-- `adc_data12` → `adc_data14`
-- `adc_data13` → `adc_data15`
 
 
