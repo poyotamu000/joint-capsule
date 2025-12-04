@@ -3,8 +3,8 @@
   <name>joint_capsule</name>
   <version>0.0.0</version>
   <description>The joint_capsule package</description>
-  <maintainer email="miki@jsk.imi.i.u-tokyo.ac.jp">leus</maintainer>
-  <license>TODO</license>
+  <maintainer email="miki@jsk.imi.i.u-tokyo.ac.jp">Akihiro Miki</maintainer>
+  <license>BSD</license>
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>message_generation</build_depend>
   <exec_depend>message_runtime</exec_depend>
